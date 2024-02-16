@@ -16,11 +16,11 @@ def hello_world():
 
 @app.route('/predict_api',methods=['POST'])
 def predict_api():
-    data=request.json(['data'])
+    data=request.json['data']
     print(data)
     print(np.array(list(data.values())).reshape(1,-1))
     new_data=scalaar.transform(np.array(list(data.values())).reshape(1,-1))
-    output=regmodel.prediction(new_data)
+    output=regmodel.predict(new_data)
     print(output[0])
     return jsonify(output[0]) 
 
